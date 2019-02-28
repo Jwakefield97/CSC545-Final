@@ -14,7 +14,7 @@ class Grid {
   public void render(){
    for(int i =0; i < tiles.length; i++){
       for(int j =0; j < tiles[i].length; j++){
-        rect(tiles[i][j].getX(), tiles[i][j].getY(), tiles[i][j].getSize(), tiles[i][j].getSize());.render();
+        tiles[i][j].render();
       }
     }
   }
