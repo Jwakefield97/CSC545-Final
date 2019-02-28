@@ -17,8 +17,8 @@ class Tile {
   }
    
   public void render() {
-    
-  
+    fill(tileColor);
+    rect(x,y,size,size);
   }
   
   public boolean isClicked() {
