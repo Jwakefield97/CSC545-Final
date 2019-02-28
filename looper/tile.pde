@@ -1,6 +1,7 @@
 class Tile {
   private final int x, y, size;
   private color tileColor;
+  private PImage tileImg;
   
   public Tile() {
     this.x = 0;
@@ -17,8 +18,12 @@ class Tile {
   }
    
   public void render() {
+    rectMode(CORNERS);
     fill(tileColor);
     rect(x,y,size,size);
+    if(tileImg == null) {
+      
+    }
   }
   
   public boolean isClicked() {
@@ -44,6 +49,9 @@ class Tile {
   }
   public void setTileColor(color c) {
     this.tileColor = c;
+  }
+  public void setTileImage(PImage img) {
+    this.tileImg = img;
   }
   
 }
