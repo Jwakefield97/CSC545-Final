@@ -18,11 +18,10 @@ class Tile {
   }
    
   public void render() {
-    rectMode(CORNERS);
     fill(tileColor);
     rect(x,y,size,size);
-    if(tileImg == null) {
-      
+    if(tileImg != null) {
+      image(tileImg,x+5,y+5,size-10,size-10);
     }
   }
   
