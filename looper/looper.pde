@@ -7,4 +7,12 @@ void setup(){
 
 void draw(){
   t.render();
+  
+}
+
+//check the tiles to see which one was clicked
+void mouseReleased() {
+  if(t.isClicked()){
+    background(random(0,255),random(0,255),random(0,255));  
+  }
 }

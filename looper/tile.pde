@@ -22,10 +22,13 @@ class Tile {
   }
   
   public boolean isClicked() {
-    return false;
+    if (mouseX >= x && mouseX <= x+size && 
+      mouseY >= y && mouseY <= y+size) {
+      return true;
+    } else {
+      return false;
+    }
   }
-  
-  
   
   public int getX() {
     return x;
