@@ -15,9 +15,21 @@ class Grid {
    for(int i =0; i < tiles.length; i++){
       for(int j =0; j < tiles[i].length; j++){
         tiles[i][j].render();
-        //rect(tiles[i][j].getX(), tiles[i][j].getY(), tiles[i][j].getSize(), tiles[i][j].getSize());
       }
     }
+  }
+  
+  //return a tile if it is clicked else return null
+  public Tile checkClickedTile() {
+    Tile t = null;
+    for(int y = 0; y < tiles.length; y++){
+      for(int x = 0; x < tiles[y].length; x++){
+        if(tiles[y][x].isClicked()) {
+          t = tiles[y][x];
+        }
+      }
+    }
+    return t;
   }
 
 }
