@@ -6,7 +6,7 @@ class Grid {
     for(int i =0; i < tiles.length; i++){
       color c = color(255 - i *50,0 + i *50, 0 + i * 50);
       for(int j =0; j < tiles[i].length; j++){
-        tiles[i][j] = new Tile(10 + i*30,10 + j*30,25);
+        tiles[i][j] = new Tile(10 + i*30,10 + j*30,25,c);
       }
     }
   }

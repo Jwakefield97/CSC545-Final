@@ -1,5 +1,9 @@
 Tile t;
+private Grid grid;
+int sizeX = 10;
+int sizeY = 10;
 void setup(){
+  grid = new Grid(sizeX, sizeY);
   size(800,600);
   PImage img = loadImage("electricguitar.jpeg");
   t = new Tile(width/2,height/2,50,color(120,120,120));
