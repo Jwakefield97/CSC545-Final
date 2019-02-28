@@ -5,9 +5,6 @@ int sizeY = 10;
 void setup(){
   grid = new Grid(sizeX, sizeY);
   size(800,600);
-  PImage img = loadImage("electricguitar.jpeg");
-  t = new Tile(width/2,height/2,50,color(120,120,120));
-  t.setTileImage(img);
 }
 
 void draw(){
@@ -17,7 +14,7 @@ void draw(){
 
 //check the tiles to see which one was clicked
 void mouseReleased() {
-  if(t.isClicked()){
+  if(grid.checkClickedTile() != null){
     background(random(0,255),random(0,255),random(0,255));  
    
   }
