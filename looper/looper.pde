@@ -7,7 +7,7 @@ void setup(){
 }
 
 void draw(){
-  t.render();
+ grid.render();
   
 }
 
@@ -15,5 +15,6 @@ void draw(){
 void mouseReleased() {
   if(t.isClicked()){
     background(random(0,255),random(0,255),random(0,255));  
+   
   }
 }
