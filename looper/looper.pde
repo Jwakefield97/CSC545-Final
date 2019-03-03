@@ -8,14 +8,15 @@ void setup(){
 }
 
 void draw(){
+ clear();
  grid.render();
   
 }
 
 //check the tiles to see which one was clicked
 void mouseReleased() {
-  if(grid.checkClickedTile() != null){
-    background(random(0,255),random(0,255),random(0,255));  
-   
+  Tile clicked = grid.checkClickedTile();
+  if(clicked != null){
+    clicked.setActive(!clicked.isActive());  
   }
 }

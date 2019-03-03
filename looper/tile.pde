@@ -2,6 +2,7 @@ class Tile {
   private final int x, y, size;
   private color tileColor;
   private PImage tileImg;
+  private boolean active = false;
   
   
   public Tile() {
@@ -19,11 +20,16 @@ class Tile {
   }
    
   public void render() {
+    if(active){
+      strokeWeight(3);
+      stroke(255,0,0);
+    }
     fill(tileColor);
     rect(x,y,size,size);
     if(tileImg != null) {
       image(tileImg,x+5,y+5,size-10,size-10);
     }
+    noStroke();
   }
   
   public boolean isClicked() {
@@ -34,6 +40,9 @@ class Tile {
       return false;
     }
   }
+  
+  
+  //getters/setters
   
   public int getX() {
     return x;
@@ -52,6 +61,12 @@ class Tile {
   }
   public void setTileImage(PImage img) {
     this.tileImg = img;
+  }
+  public void setActive(boolean active){
+    this.active = active;
+  }
+  public boolean isActive(){
+    return active;
   }
   
 }
