@@ -7,7 +7,7 @@ SinOsc sin;
 //AudioPlayer bass1;
 Tile t;
 private Grid grid;
-int sizeX = 10;
+int sizeX = 8;
 int sizeY = 1;
 int savedTime;
 int totalTime = 1000;
@@ -67,6 +67,7 @@ void mouseReleased() {
   }
 }
 /* Keyboard presses
+   'r': Resets line position
    Space: Pause
    UP: Less rows
    DOWN: More Rows
@@ -78,29 +79,33 @@ void mouseReleased() {
 void keyPressed(){
   if(key == CODED){
   	if(keyCode == DOWN){
-  		if(sizeY < 15){
+  		if(sizeY < 11){
         sizeY++;
         grid = new Grid(sizeX, sizeY);
       }
   	}
     if(keyCode == UP){
-      if(sizeY > 0){
+      if(sizeY > 1){
         sizeY--;
         grid = new Grid(sizeX, sizeY);
       }
     }
     if(keyCode == LEFT){
-      if(sizeX > 0){
-        sizeX--;
+      if(sizeX > 4){
+        sizeX -=4;
         grid = new Grid(sizeX, sizeY);
       }
     }
     if(keyCode == RIGHT){
       if(sizeX < 20){
-        sizeX++;
+        sizeX+=4;
         grid = new Grid(sizeX, sizeY);
       }
     }
+  }
+  else if(key == 'r'){
+    pause = true;
+    lineX = -30;
   }
   else if(key == ' '){
     pause = !pause;

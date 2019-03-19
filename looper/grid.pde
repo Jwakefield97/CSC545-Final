@@ -1,20 +1,59 @@
 class Grid {
   private Tile[][] tiles;
   
+  private color colorPicker(int y){
+    color c = color(255,0,0);
+    switch(y){
+     case 0:
+       c = color(255,66,66);
+       break;
+     case 1:
+       c = color(255,66,66);
+       break;
+     case 2:
+       c = color(255,132,66);
+       break;
+     case 3:
+       c = color(255,255,66);
+       break;
+     case 4:
+       c = color(255,255,66);
+       break;
+     case 5:
+       c = color(132,255,66);
+       break;
+     case 6:
+       c = color(66,255,66);
+       break;
+     case 7:
+       c = color(66,255,132);
+       break;
+     case 8:
+       c = color(66,255,255);
+       break;
+     case 9:
+       c = color(66,132,255);
+       break;
+     case 10:
+       c = color(66,66,255);
+       break;
+    }
+    return c;
+  }
   public Grid(int sizeX, int sizeY){
     tiles = new Tile[sizeY][sizeX];
-    for(int i =0; i < tiles.length; i++){
-      color c = color(255 - i *50,0 + i *50, 0 + i * 50);
-      for(int j =0; j < tiles[i].length; j++){
-        tiles[i][j] = new Tile(10 + j*30,10 + i*30,25,c);
+    for(int y =0; y < tiles.length; y++){
+      color c = colorPicker(y);
+      for(int x =0; x < tiles[y].length; x++){
+        tiles[y][x] = new Tile(10 + x*30,10 + y*30,25,c);
       }
     }
   }
   
   public void render(){
-   for(int i =0; i < tiles.length; i++){
-      for(int j =0; j < tiles[i].length; j++){
-        tiles[i][j].render();
+   for(int y =0; y < tiles.length; y++){
+      for(int x =0; x < tiles[y].length; x++){
+        tiles[y][x].render();
       }
     }
   }
