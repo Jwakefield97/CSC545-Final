@@ -8,44 +8,45 @@ class Grid {
        c = color(255,66,66);
        break;
      case 1:
-       c = color(255,66,66);
-       break;
-     case 2:
        c = color(255,132,66);
        break;
+     case 2:
+       c = color(255,255,66);
+       break;
      case 3:
-       c = color(255,255,66);
-       break;
-     case 4:
-       c = color(255,255,66);
-       break;
-     case 5:
        c = color(132,255,66);
        break;
-     case 6:
+     case 4:
        c = color(66,255,66);
        break;
-     case 7:
+     case 5:
        c = color(66,255,132);
        break;
-     case 8:
+     case 6:
        c = color(66,255,255);
        break;
-     case 9:
+     case 7:
        c = color(66,132,255);
        break;
-     case 10:
+     case 8:
        c = color(66,66,255);
+       break;
+     case 9:
+       c = color(66,66,132);
+       break;
+     case 10:
+       c = color(66,66,66);
        break;
     }
     return c;
   }
+  
   public Grid(int sizeX, int sizeY){
     tiles = new Tile[sizeY][sizeX];
     for(int y =0; y < tiles.length; y++){
       color c = colorPicker(y);
       for(int x =0; x < tiles[y].length; x++){
-        tiles[y][x] = new Tile(10 + x*30,10 + y*30,25,c);
+        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c);
       }
     }
   }
@@ -75,6 +76,7 @@ class Grid {
     for(int y = 0; y < tiles.length; y++){
       if(tiles[y][x].isActive()) {
         //Plays tone at the Hz of 440 - the row
+        sin.amp(1);
         sin.play(440 - (y*26),1);
         //if(y == 0){
         //  //guitar1.rewind();
