@@ -3,6 +3,7 @@ class Tile {
   private color tileColor;
   private PImage tileImg;
   private boolean active = false;
+  private String fileName = "Guitar1.mp3";
   
   
   public Tile() {
@@ -12,11 +13,12 @@ class Tile {
     this.tileColor = color(0,0,0);
   }
   
-  public Tile(int x, int y, int size, color c) {
+  public Tile(int x, int y, int size, color c, String fileName) {
     this.x = x;
     this.y = y; 
     this.size = size;
     this.tileColor = c;
+    this.fileName = fileName;
   }
    
   public void render() {
@@ -67,6 +69,12 @@ class Tile {
   }
   public boolean isActive(){
     return active;
+  }
+  public void setFileName(String fileName){
+    this.fileName = fileName;
+  }
+  public String getFileName(){
+    return this.fileName;
   }
   
 }

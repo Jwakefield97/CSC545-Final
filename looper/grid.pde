@@ -1,3 +1,6 @@
+import ddf.minim.*;
+
+
 class Grid {
   private Tile[][] tiles;
   
@@ -46,7 +49,7 @@ class Grid {
     for(int y =0; y < tiles.length; y++){
       color c = colorPicker(y);
       for(int x =0; x < tiles[y].length; x++){
-        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c);
+        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,y < 3 ? "Guitar1.mp3" : "Bass1.mp3");
       }
     }
   }
@@ -71,13 +74,21 @@ class Grid {
     }
     return t;
   }
+  
+  
+  
+  
   // Plays the notes
   public void playTileNote(int x){
+    AudioPlayer[] mplayer = new AudioPlayer[tiles.length];
+    
     for(int y = 0; y < tiles.length; y++){
       if(tiles[y][x].isActive()) {
+         mplayer[y] = minim.loadFile(tiles[y][x].getFileName());
+         mplayer[y].play();
         //Plays tone at the Hz of 440 - the row
-        sin.amp(1);
-        sin.play(440 - (y*26),1);
+        //sin.amp(1);
+        //sin.play(440 - (y*26),1);
         //if(y == 0){
         //  //guitar1.rewind();
         //  //guitar1.play();

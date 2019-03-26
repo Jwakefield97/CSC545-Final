@@ -1,6 +1,7 @@
 import processing.sound.*;
 SoundFile file;
 SinOsc sin;
+Minim minim;
 //import ddf.minim.*;
 //Minim minim;
 //AudioPlayer guitar1;
@@ -26,6 +27,7 @@ void setup(){
   
   // Sets up the tone
   sin = new SinOsc(this);
+  minim = new Minim(this);
 }
 
 void draw(){
@@ -38,9 +40,6 @@ void draw(){
    drawGrid();
    drawMenu();
  }
- 
- 
- 
 }
 
 void drawGrid(){
