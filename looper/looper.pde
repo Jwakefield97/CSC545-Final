@@ -44,9 +44,10 @@ void draw(){
 }
 
 void drawGrid(){
-  drawLine();
- 
-   if(!pause){ // Plays if unpaused
+  strokeWeight(1);
+   if(lineX > -30)
+     drawLine();     
+   if(!pause){ // Plays if unpaused     
      int passedTime = millis() - savedTime;
      //This cuts off the tone before it plays again to prevent continous tones
      if(passedTime > totalTime * .80)
