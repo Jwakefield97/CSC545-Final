@@ -1,5 +1,3 @@
-import ddf.minim.*;
-
 
 class Grid {
   private Tile[][] tiles;
