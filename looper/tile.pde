@@ -3,8 +3,8 @@ class Tile {
   private color tileColor;
   private PImage tileImg;
   private boolean active = false;
-  private String fileName = "Guitar1.mp3";
-  
+  private String fileName = "Drums/ClHat.wav";
+
   
   public Tile() {
     this.x = 0;
@@ -19,6 +19,7 @@ class Tile {
     this.size = size;
     this.tileColor = c;
     this.fileName = fileName;
+    
   }
    
   public void render() {

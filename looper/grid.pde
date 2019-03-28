@@ -1,6 +1,7 @@
 
 class Grid {
   private Tile[][] tiles;
+  private String drums[] = {"Drums\\ClHat.wav","Drums\\Kick01.wav","Drums\\OpHat01.wav","Drums\\Snr01.wav","Drums\\Tom01.wav","Drums\\Tom02.wav","Drums\\Tom03.wav"};
   
   private color colorPicker(int y){
     color c = color(255,0,0);
@@ -46,7 +47,12 @@ class Grid {
     tiles = new Tile[sizeY][sizeX];
     for(int y =0; y < tiles.length; y++){
       color c = colorPicker(y);
-      for(int x =0; x < tiles[y].length; x++){
+      for(int x =0; x < tiles[y].length; x++){  
+        //if(y>7)
+        //  tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[y]);
+        //else
+        //  tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[0]);
+        
         tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,y < 3 ? "Guitar1.mp3" : "Bass1.mp3");
       }
     }
