@@ -15,6 +15,7 @@ int lineX = -30;
 boolean pause = true, showTitle = true, showExit = false;
 PFont f;
 String menuText[] = {"Load","Save","Clear","Exit"};
+FileUtil fileUtil;
 void settings() {
   fullScreen();
 }
@@ -27,6 +28,7 @@ void setup(){
   // Sets up the tone
   sin = new SinOsc(this);
   minim = new Minim(this);
+  fileUtil = new FileUtil();
 }
 
 void draw(){
