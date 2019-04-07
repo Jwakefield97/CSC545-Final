@@ -1,4 +1,6 @@
-class Tile {
+
+class Tile implements Serializable {
+  static final long serialVersionUID = 1L;
   private final int x, y, size;
   private color tileColor;
   private PImage tileImg;

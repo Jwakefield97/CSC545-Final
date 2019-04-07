@@ -1,5 +1,7 @@
+import java.io.Serializable;
 
-class Grid {
+class Grid implements Serializable {
+  static final long serialVersionUID = 1L;
   private Tile[][] tiles;
   private String drums[] = {"Drums\\ClHat.wav","Drums\\Kick01.wav","Drums\\OpHat01.wav","Drums\\Snr01.wav","Drums\\Tom01.wav","Drums\\Tom02.wav","Drums\\Tom03.wav"};
   

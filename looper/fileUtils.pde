@@ -9,18 +9,14 @@ import java.io.ObjectOutputStream;
 
 class FileUtil {
   
-  private String saveDirectory = "./";
-  
   public FileUtil(){}
   
-  public FileUtil(String saveDir) {
-    this.saveDirectory = saveDir;
-  }
-  
   void saveGrid(Grid g, String fileName) {
+    FileOutputStream f;
+    ObjectOutputStream o;
     try {
-      FileOutputStream f = new FileOutputStream(new File(saveDirectory+fileName));
-      ObjectOutputStream o = new ObjectOutputStream(f);
+      f = new FileOutputStream(new File(fileName));
+      o = new ObjectOutputStream(f);
 
       // Write objects to file
       o.writeObject(g);
@@ -28,9 +24,8 @@ class FileUtil {
       o.close();
       f.close();
     } catch(Exception e) {
+      e.printStackTrace();
     }
-      
-
   }
   
   Grid getGrid(String fileName) {

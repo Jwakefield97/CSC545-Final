@@ -12,17 +12,19 @@ int sizeY = 1;
 int savedTime;
 int totalTime = 1000;
 int lineX = -30;
-boolean pause = true, showTitle = true, showExit = false;
+boolean pause = true, showTitle = true, showExit = false, loadFile = false;
 PFont f;
 String menuText[] = {"Load","Save","Clear","Exit"};
 FileUtil fileUtil;
 void settings() {
-  fullScreen();
+  size(800,600);
+  //fullScreen();
 }
 void setup(){
+
   grid = new Grid(sizeX, sizeY);
   f = createFont("Verdana-12.vlw",10);
-  //size(800,600);
+  
   savedTime = millis();
   
   // Sets up the tone
@@ -144,25 +146,51 @@ void mouseReleased() {
   if(clicked != null){
     clicked.setActive(!clicked.isActive());  
   }
-  if(mouseX > width - 105 && mouseX < width - 5 && mouseY > 5 && mouseY < 45 && showTitle == false)
+  if(mouseX > width - 105 && mouseX < width - 5 && mouseY > 5 && mouseY < 45 && showTitle == false){
     showExit = true;
-  else if(mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY >  height/2 + 50 && mouseY < height/2 + 100 && showTitle == true)
+  } else if(mouseX > 5 && mouseX < 105 && mouseY > 5 && mouseY < 45) { //load button
+    loadFile = true;
+    selectInput("Select a file to process:", "fileSelected");
+  } else if (mouseX > 115 && mouseX < 215 && mouseY > 5 && mouseY < 45) { //save button
+    loadFile = false;
+    selectInput("Select a file to process:", "fileSelected");
+  } else if (mouseX > 225 && mouseX < 325 && mouseY > 5 && mouseY < 45) { //clear button
+    sizeX = 8;
+    sizeY = 1;
+    grid = new Grid(sizeX, sizeY);
+  } else if(mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY >  height/2 + 50 && mouseY < height/2 + 100 && showTitle == true){
     showTitle = false;
+  }
   
 }
 void mouseMoved(){
-  if(mouseX > 5 && mouseX < 105 && mouseY > 5 && mouseY < 45)
+  if(mouseX > 5 && mouseX < 105 && mouseY > 5 && mouseY < 45){
     cursor(HAND);
-  else if(mouseX > 115 && mouseX < 215 && mouseY > 5 && mouseY < 45)
+  } else if(mouseX > 115 && mouseX < 215 && mouseY > 5 && mouseY < 45) {
     cursor(HAND);
-  else if(mouseX > 225 && mouseX < 325 && mouseY > 5 && mouseY < 45)
+  } else if(mouseX > 225 && mouseX < 325 && mouseY > 5 && mouseY < 45) {
     cursor(HAND);
-  else if(mouseX > width - 105 && mouseX < width - 5 && mouseY > 5 && mouseY < 45)
+  } else if(mouseX > width - 105 && mouseX < width - 5 && mouseY > 5 && mouseY < 45)
     cursor(HAND);
   else if(mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY >  height/2 + 50 && mouseY < height/2 + 100 && showTitle == true)
     cursor(HAND);
   else
     cursor(ARROW);
+}
+//a method that handles the selected file from file explorer
+void fileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    if(loadFile){ //user is loading a file from a path
+      Grid newGrid = fileUtil.getGrid(selection.getAbsolutePath());
+      if(newGrid != null) {
+        grid = newGrid;
+      }
+    }else{ //user is saving a file to a location
+      fileUtil.saveGrid(grid,selection.getAbsolutePath());
+    }
+  }
 }
 /* Keyboard presses
    'r': Resets line position
