@@ -2,6 +2,7 @@ import java.io.Serializable;
 
 class Grid implements Serializable {
   static final long serialVersionUID = 1L;
+  private int sizeX, sizeY;
   private Tile[][] tiles;
   private String drums[] = {"Drums\\ClHat.wav","Drums\\Kick01.wav","Drums\\OpHat01.wav","Drums\\Snr01.wav","Drums\\Tom01.wav","Drums\\Tom02.wav","Drums\\Tom03.wav"};
   
@@ -45,7 +46,15 @@ class Grid implements Serializable {
     return c;
   }
   
+  public Grid(Tile[][] tiles, int sizeX, int sizeY){
+    this.tiles = tiles;
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
+  }
+  
   public Grid(int sizeX, int sizeY){
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
     tiles = new Tile[sizeY][sizeX];
     for(int y =0; y < tiles.length; y++){
       color c = colorPicker(y);
@@ -55,7 +64,7 @@ class Grid implements Serializable {
         //else
         //  tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[0]);
         
-        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,y < 3 ? "Guitar1.mp3" : "Bass1.mp3");
+        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,y < 3 ? "Guitar1.mp3" : "Bass1.mp3",false);
       }
     }
   }
@@ -81,9 +90,6 @@ class Grid implements Serializable {
     return t;
   }
   
-  
-  
-  
   // Plays the notes
   public void playTileNote(int x){
     AudioPlayer[] mplayer = new AudioPlayer[tiles.length];
@@ -108,5 +114,18 @@ class Grid implements Serializable {
       }
     }
   }
+  
+  public Tile[][] getTiles(){
+    return tiles;
+  }
+  
+  public int getSizeX(){
+    return sizeX;
+  }
+  
+  public int getSizeY(){
+    return sizeY;
+  }
+  
 
 }

@@ -7,7 +7,6 @@ class Tile implements Serializable {
   private boolean active = false;
   private String fileName = "Drums/ClHat.wav";
 
-  
   public Tile() {
     this.x = 0;
     this.y = 0; 
@@ -15,13 +14,13 @@ class Tile implements Serializable {
     this.tileColor = color(0,0,0);
   }
   
-  public Tile(int x, int y, int size, color c, String fileName) {
+  public Tile(int x, int y, int size, color c, String fileName, boolean active) {
     this.x = x;
     this.y = y; 
     this.size = size;
     this.tileColor = c;
     this.fileName = fileName;
-    
+    this.active = active;
   }
    
   public void render() {
