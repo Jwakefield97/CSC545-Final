@@ -191,7 +191,9 @@ void fileSelected(File selection) {
       if(newGrid != null) {
         grid = newGrid;
       }
-    }else{ //user is saving a file to a location
+    } else if(hoverTile != null && mouseButton == RIGHT ) { //setting a new tile filename 
+      hoverTile.setFileName(selection.getAbsolutePath());
+    } else{ //user is saving a file to a location
       fileUtil.saveGrid(grid,selection.getAbsolutePath());
     }
   }

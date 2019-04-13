@@ -82,9 +82,11 @@ class Grid implements Serializable {
     Tile t = null;
     for(int y = 0; y < tiles.length; y++){
       for(int x = 0; x < tiles[y].length; x++){
-        if(tiles[y][x].isClicked()) {
+        if(tiles[y][x].isClicked() && mouseButton == LEFT) {
           t = tiles[y][x];
-        }
+        } else if (tiles[y][x].isClicked() && mouseButton == RIGHT) {
+          selectInput("Select a file for the tile:", "fileSelected");
+        }  
       }
     }
     return t;

@@ -5,7 +5,7 @@ class Tile implements Serializable {
   private color tileColor;
   private PImage tileImg;
   private boolean active = false;
-  private String fileName = "Drums/.wav";
+  private String fileName = "Drums/.wav", fileNameShort = "";
 
   public Tile() {
     this.x = 0;
@@ -19,7 +19,7 @@ class Tile implements Serializable {
     this.y = y; 
     this.size = size;
     this.tileColor = c;
-    this.fileName = fileName;
+    setFileName(fileName); //sets the short file name as well
     this.active = active;
   }
    
@@ -45,9 +45,9 @@ class Tile implements Serializable {
     strokeWeight(2);
     stroke(0,0,255);
     fill(255);
-    rect(textX,textY,textWidth(fileName)+25,textHeight+10);
+    rect(textX,textY,textWidth(fileNameShort)+25,textHeight+10);
     fill(0);
-    text(fileName,textX+10,y+10);
+    text(fileNameShort,textX+10,y+10);
   }
   
   private void isHoverTile() {
@@ -95,9 +95,16 @@ class Tile implements Serializable {
   }
   public void setFileName(String fileName){
     this.fileName = fileName;
+    this.fileNameShort = fileName.substring(fileName.lastIndexOf("\\")+1);
   }
   public String getFileName(){
     return this.fileName;
+  }
+  public void setFileNameShort(String fileName){
+    this.fileNameShort = fileName;
+  }
+  public String getFileNameShort(){
+    return this.fileNameShort;
   }
   
 }
