@@ -6,6 +6,7 @@ Minim minim;
 //AudioPlayer guitar1;
 //AudioPlayer bass1;
 Tile t;
+Tile hoverTile; //the tile that is being hovered over
 private Grid grid;
 int sizeX = 8;
 int sizeY = 1;
@@ -72,6 +73,9 @@ void drawGrid(){
      sin.stop();
    //Renders the grid
    grid.render(); 
+   if(hoverTile != null) {
+     hoverTile.drawInfo();
+   }
 }
 
 void drawLine(){

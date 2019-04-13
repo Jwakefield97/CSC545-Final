@@ -5,7 +5,7 @@ class Tile implements Serializable {
   private color tileColor;
   private PImage tileImg;
   private boolean active = false;
-  private String fileName = "Drums/ClHat.wav";
+  private String fileName = "Drums/.wav";
 
   public Tile() {
     this.x = 0;
@@ -33,7 +33,28 @@ class Tile implements Serializable {
     if(tileImg != null) {
       image(tileImg,x+5,y+5,size-10,size-10);
     }
+    isHoverTile();
     noStroke();
+  }
+  
+  public void drawInfo() {
+    int textX = x+size/2, textY = y-size/2;
+    textAlign(LEFT, LEFT);
+    textSize(15);
+    float textHeight = textAscent()+textDescent();
+    strokeWeight(2);
+    stroke(0,0,255);
+    fill(255);
+    rect(textX,textY,textWidth(fileName)+25,textHeight+10);
+    fill(0);
+    text(fileName,textX+10,y+10);
+  }
+  
+  private void isHoverTile() {
+    if (mouseX >= x && mouseX <= x+size && 
+      mouseY >= y && mouseY <= y+size) {
+      hoverTile = this;
+    }
   }
   
   public boolean isClicked() {
