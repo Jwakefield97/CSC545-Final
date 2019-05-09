@@ -4,7 +4,7 @@ class Grid implements Serializable {
   static final long serialVersionUID = 1L;
   private int sizeX, sizeY;
   private Tile[][] tiles;
-  private String drums[] = {"Drums\\ClHat.wav","Drums\\Kick01.wav","Drums\\OpHat01.wav","Drums\\Snr01.wav","Drums\\Tom01.wav","Drums\\Tom02.wav","Drums\\Tom03.wav"};
+  private String drums[] = {"Drums\\ClHat.mp3","Drums\\Kick.mp3","Drums\\OpHat.mp3","Drums\\Snr.mp3","Drums\\Tom1.mp3","Drums\\Tom2.mp3","Drums\\Tom3.mp3","Drums\\ClHat.mp3","Drums\\Kick.mp3","Drums\\OpHat.mp3","Drums\\Snr.mp3"};
   
   private color colorPicker(int y){
     color c = color(255,0,0);
@@ -59,12 +59,7 @@ class Grid implements Serializable {
     for(int y =0; y < tiles.length; y++){
       color c = colorPicker(y);
       for(int x =0; x < tiles[y].length; x++){  
-        //if(y>7)
-        //  tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[y]);
-        //else
-        //  tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[0]);
-        
-        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,y < 3 ? "Guitar1.mp3" : "Bass1.mp3",false);
+        tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[y],false);
       }
     }
   }

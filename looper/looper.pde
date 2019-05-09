@@ -19,7 +19,7 @@ String menuText[] = {"Load","Save","Clear","Exit"};
 FileUtil fileUtil;
 void settings() {
   size(800,600);
-  //fullScreen();
+  fullScreen();
 }
 void setup(){
 
