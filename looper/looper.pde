@@ -115,6 +115,11 @@ void drawMenu(){
   textSize(16);
   text(menuText[3], width - 55, 30);
   
+  
+  textAlign(CENTER);
+  textSize(16);
+  text(60000/totalTime + " BPM", width/2 + 50, 30);
+  
 }
 
 void drawTitle(){
