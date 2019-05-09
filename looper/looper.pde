@@ -213,25 +213,25 @@ void keyPressed(){
   	if(keyCode == DOWN){
   		if(sizeY < 11){
         sizeY++;
-        grid = new Grid(sizeX, sizeY);
+        grid.gridResize(sizeX,sizeY);
       }
   	}
     if(keyCode == UP){
       if(sizeY > 1){
         sizeY--;
-        grid = new Grid(sizeX, sizeY);
+        grid.gridResize(sizeX,sizeY);
       }
     }
     if(keyCode == LEFT){
       if(sizeX > 4){
         sizeX -=4;
-        grid = new Grid(sizeX, sizeY);
+        grid.gridResize(sizeX,sizeY);
       }
     }
     if(keyCode == RIGHT){
       if(sizeX < 20){
         sizeX+=4;
-        grid = new Grid(sizeX, sizeY);
+        grid.gridResize(sizeX,sizeY);
       }
     }    
   }

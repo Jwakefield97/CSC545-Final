@@ -129,6 +129,24 @@ class Grid implements Serializable {
     }
   }
   
+  //resize the grid and include the old tile info
+  public void gridResize(int newX, int newY) {
+    Grid newGrid = new Grid(newX, newY);
+    Tile[][] oldTiles = this.getTiles();
+    this.tiles = newGrid.getTiles();
+    this.sizeX = newX;
+    this.sizeY = newY;
+    for(int y = 0; y < oldTiles.length; y++){
+      for(int x = 0; x < oldTiles[y].length; x++){
+        try {
+          tiles[y][x] = oldTiles[y][x];
+          this.setRowFileName(tiles[y][x], tiles[y][x].getFileName());
+        } catch (Exception e) {}
+        
+      }
+    }
+  }
+  
   public Tile[][] getTiles(){
     return tiles;
   }
