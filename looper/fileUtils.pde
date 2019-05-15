@@ -27,6 +27,7 @@ class FileUtil {
     outputObject.setJSONArray("tiles",outputTiles);
     outputObject.setInt("sizeX",g.getSizeX());
     outputObject.setInt("sizeY",g.getSizeY());
+    outputObject.setInt("totalTime",totalTime);
     saveJSONObject(outputObject,fileName);
   }
   
@@ -35,6 +36,7 @@ class FileUtil {
     JSONObject inputObject = loadJSONObject(fileName);
     int sizeX = inputObject.getInt("sizeX"), sizeY = inputObject.getInt("sizeY");
     Tile[][] tiles = new Tile[sizeY][sizeX];
+    totalTime = inputObject.getInt("totalTime");
     
     JSONArray input = inputObject.getJSONArray("tiles");
     for(int y = 0; y < input.size(); y++){
