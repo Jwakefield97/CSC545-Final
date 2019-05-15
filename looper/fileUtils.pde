@@ -34,10 +34,11 @@ class FileUtil {
   //method to deserialize the saved json object to a grid object
   Grid getGrid(String fileName) {
     JSONObject inputObject = loadJSONObject(fileName);
-    int sizeX = inputObject.getInt("sizeX"), sizeY = inputObject.getInt("sizeY");
+    sizeX = inputObject.getInt("sizeX");
+    sizeY = inputObject.getInt("sizeY");
+    
     Tile[][] tiles = new Tile[sizeY][sizeX];
     totalTime = inputObject.getInt("totalTime");
-    
     JSONArray input = inputObject.getJSONArray("tiles");
     for(int y = 0; y < input.size(); y++){
       JSONArray colArray = input.getJSONArray(y);
