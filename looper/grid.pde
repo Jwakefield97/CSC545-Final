@@ -5,6 +5,7 @@ class Grid implements Serializable {
   private int sizeX, sizeY;
   private Tile[][] tiles;
   private String drums[] = {"Drums\\ClHat.mp3","Drums\\Kick.mp3","Drums\\OpHat.mp3","Drums\\Snr.mp3","Drums\\Tom1.mp3","Drums\\Tom2.mp3","Drums\\Tom3.mp3","Drums\\ClHat.mp3","Drums\\Kick.mp3","Drums\\OpHat.mp3","Drums\\Snr.mp3"};
+  private HashMap<String, ddf.minim.AudioSample> cachedFiles;
   
   private color colorPicker(int y){
     color c = color(255,0,0);
@@ -50,6 +51,7 @@ class Grid implements Serializable {
     this.tiles = tiles;
     this.sizeX = sizeX;
     this.sizeY = sizeY;
+    cachedFiles = new HashMap<String, ddf.minim.AudioSample>();
   }
   
   public Grid(int sizeX, int sizeY){
@@ -62,6 +64,7 @@ class Grid implements Serializable {
         tiles[y][x] = new Tile((width * 1/3) - 10 + x*30,(height * 1/3) - 10 + y*30,25,c,drums[y],false);
       }
     }
+    cachedFiles = new HashMap<String, ddf.minim.AudioSample>();
   }
   
   public void render(){
@@ -89,25 +92,14 @@ class Grid implements Serializable {
   
   // Plays the notes
   public void playTileNote(int x){
-    AudioPlayer[] mplayer = new AudioPlayer[tiles.length];
-    
     for(int y = 0; y < tiles.length; y++){
       if(tiles[y][x].isActive()) {
-         mplayer[y] = minim.loadFile(tiles[y][x].getFileName());
-         mplayer[y].play();
-        //Plays tone at the Hz of 440 - the row
-        //sin.amp(1);
-        //sin.play(440 - (y*26),1);
-        //if(y == 0){
-        //  //guitar1.rewind();
-        //  //guitar1.play();
-        //   sin.play(445,1);
-        //}
-        //else{
-        //  //bass1.rewind();
-        //  //bass1.play();
-        //}
-        //file.play(tiles.length - y, 1.0);
+        ddf.minim.AudioSample file = cachedFiles.get(tiles[y][x].getFileName());
+        if(file == null) {
+          file = minim.loadSample(tiles[y][x].getFileName());
+          cachedFiles.put(tiles[y][x].getFileName(), file);
+        }
+        file.trigger();
       }
     }
   }
