@@ -12,6 +12,7 @@ int sizeX = 8;
 int sizeY = 1;
 int savedTime;
 int totalTime = 1000;
+int bpm = 100;
 int lineX = -30;
 boolean pause = true, showTitle = true, showExit = false, loadFile = false;
 PFont f;
@@ -35,6 +36,7 @@ void setup(){
 }
 
 void draw(){
+  totalTime = 60000 / bpm;
  clear();
  if(showTitle)
    drawTitle();
@@ -53,13 +55,8 @@ void drawGrid(){
      drawLine();     
    if(!pause){ // Plays if unpaused     
      int passedTime = millis() - savedTime;
-     //This cuts off the tone before it plays again to prevent continous tones
-     if(passedTime > totalTime * .80)
-        sin.amp(0.0);
      //This plays the tone if it's time to play it
      if (passedTime > totalTime) {
-         sin.amp(0.0);
-        
         if(lineX < sizeX*30 - 30)
           lineX += 30;
         else
@@ -118,8 +115,77 @@ void drawMenu(){
   
   textAlign(CENTER);
   textSize(16);
-  text(60000/totalTime + " BPM", width/2 + 50, 30);
+  fill(255);
+  text(bpm + "\nBPM", (width/2) + 260, 200);
   
+  
+  textAlign(CENTER);
+  textSize(16);
+  fill(255);
+  text("Grid Management", width/2 - 200, 75); 
+  
+  if(mouseX > ((width/2) - 150) && mouseX < ((width/2) - 150) + 75 && mouseY > 175 && mouseY < 250)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) - 150,175,75,75);
+  
+  fill(0);
+  triangle((width/2)-100,215, (width/2) - 125, 190, (width/2) - 125, 240);
+  
+  if(mouseX > ((width/2) - 300) && mouseX < ((width/2) - 300) + 75 && mouseY > 175 && mouseY < 250)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) - 300,175,75,75);
+  
+  fill(0);
+  triangle((width/2)-275,215, (width/2) - 250, 190, (width/2) - 250, 240);
+  
+  if(mouseX > ((width/2) - 225) && mouseX < ((width/2) - 225) + 75 && mouseY > 100 && mouseY < 175)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) - 225,100,75,75);
+  
+  fill(0);
+  triangle((width/2)-160,140, (width/2) - 185, 115, (width/2) - 210, 140);
+  
+  if(mouseX > ((width/2) -225) && mouseX < ((width/2) - 225) + 75 && mouseY > 250 && mouseY < 325)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) - 225,250,75,75);
+  
+  fill(0);
+  triangle((width/2)-160,275, (width/2) - 185, 300, (width/2) - 210, 275);
+  
+  //----------------------
+  textAlign(CENTER);
+  textSize(16);
+  fill(255);
+  text("Speed",(width/2) + 255, 125); 
+  if(mouseX > ((width/2) +150) && mouseX < ((width/2) + 150) + 75 && mouseY > 175 && mouseY < 250)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) + 150,175,75,75);
+  textAlign(CENTER);
+  textSize(50);
+  fill(0);
+  text("-",(width/2) + 188, 225); 
+  
+  
+  if(mouseX > ((width/2) +300) && mouseX < ((width/2) + 300) + 75 && mouseY > 175 && mouseY < 250)
+    fill(26,203,248);
+  else
+    fill(225);
+  rect((width/2) + 300,175,75,75);
+  textAlign(CENTER);
+  textSize(50);
+  fill(0);
+  text("+",(width/2) + 338, 225); 
+ 
 }
 
 void drawTitle(){
@@ -170,6 +236,41 @@ void mouseReleased() {
   } else if(mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY >  height/2 + 50 && mouseY < height/2 + 100 && showTitle == true){
     showTitle = false;
   }
+  else if(mouseX > ((width/2) - 150) && mouseX < ((width/2) - 150) + 75 && mouseY > 175 && mouseY < 250){
+      if(sizeX < 20){
+        sizeX+=4;
+        grid.gridResize(sizeX,sizeY);
+      }
+  }
+  else if(mouseX > ((width/2) - 300) && mouseX < ((width/2) - 300) + 75 && mouseY > 175 && mouseY < 250){
+      if(sizeX > 4){
+        sizeX -=4;
+        grid.gridResize(sizeX,sizeY);
+      }
+  }
+  else if(mouseX > ((width/2) - 225) && mouseX < ((width/2) - 225) + 75 && mouseY > 100 && mouseY < 175){
+      if(sizeY > 1){
+        sizeY--;
+        grid.gridResize(sizeX,sizeY);
+      }
+  }
+  else if(mouseX > ((width/2) -225) && mouseX < ((width/2) - 225) +75 && mouseY > 250 && mouseY < 325){
+      if(sizeY < 11){
+        sizeY++;
+        grid.gridResize(sizeX,sizeY);
+      }
+  }
+  //----------------------
+  else if(mouseX > ((width/2) +150) && mouseX < ((width/2) + 150) + 75 && mouseY > 175 && mouseY < 250){
+    if(bpm > 50){
+        bpm -= 10;
+      }
+  }
+  else if(mouseX > ((width/2) +300) && mouseX < ((width/2) + 300) + 75 && mouseY > 175 && mouseY < 250){
+    if(bpm < 300){
+        bpm += 10;
+      }
+  }
   
 }
 void mouseMoved(){
@@ -182,9 +283,23 @@ void mouseMoved(){
   } else if(mouseX > width - 105 && mouseX < width - 5 && mouseY > 5 && mouseY < 45)
     cursor(HAND);
   else if(mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY >  height/2 + 50 && mouseY < height/2 + 100 && showTitle == true)
-    cursor(HAND);
+    cursor(HAND);    
+  else if(mouseX > ((width/2) - 150) && mouseX < ((width/2) - 150) + 75 && mouseY > 175 && mouseY < 250)
+    cursor(HAND);      
+  else if(mouseX > ((width/2) - 300) && mouseX < ((width/2) - 300) + 75 && mouseY > 175 && mouseY < 250)
+    cursor(HAND);      
+  else if(mouseX > ((width/2) - 225) && mouseX < ((width/2) - 225) + 75 && mouseY > 100 && mouseY < 175)
+    cursor(HAND);      
+  else if(mouseX > ((width/2) -225) && mouseX < ((width/2) - 225) +75 && mouseY > 250 && mouseY < 325)
+    cursor(HAND);      
+  //----------------------
+  else if(mouseX > ((width/2) +150) && mouseX < ((width/2) + 150) + 75 && mouseY > 175 && mouseY < 250)
+    cursor(HAND);      
+  else if(mouseX > ((width/2) +300) && mouseX < ((width/2) + 300) + 75 && mouseY > 175 && mouseY < 250)
+    cursor(HAND);    
   else
     cursor(ARROW);
+    
 }
 //a method that handles the selected file from file explorer
 void fileSelected(File selection) {
