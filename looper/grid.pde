@@ -108,9 +108,8 @@ class Grid implements Serializable {
   public void setRowFileName(Tile hoverTile, String filename) {
     for(int y = 0; y < tiles.length; y++){
       for(int x = 0; x < tiles[y].length; x++){
-        Tile t = tiles[y][x];
-        if(t.getY() == hoverTile.getY()) {
-          t.setFileName(filename);
+        if(tiles[y][x].getY() == hoverTile.getY()) {
+          tiles[y][x].setFileName(filename);
         }
       }
     }

@@ -1,0 +1,71 @@
+{
+  "tiles": [[
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 630,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 660,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 690,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 720,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 750,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 780,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 810,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    },
+    {
+      "fileName": "C:\\Users\\jsw5227\\Desktop\\CSC545-Final\\Audio Files\\Piano1.aif",
+      "size": 25,
+      "x": 840,
+      "y": 350,
+      "tileColor": -48574,
+      "active": false
+    }
+  ]],
+  "sizeX": 8,
+  "totalTime": 600,
+  "sizeY": 1
+}

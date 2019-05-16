@@ -36,7 +36,8 @@ class FileUtil {
     JSONObject inputObject = loadJSONObject(fileName);
     sizeX = inputObject.getInt("sizeX");
     sizeY = inputObject.getInt("sizeY");
-    
+    hoverTile = null;
+    loadFile = false;
     Tile[][] tiles = new Tile[sizeY][sizeX];
     totalTime = inputObject.getInt("totalTime");
     JSONArray input = inputObject.getJSONArray("tiles");
